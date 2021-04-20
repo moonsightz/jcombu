@@ -1,6 +1,6 @@
 name: jcombu
 description: Japanese charset convertor from SJIS/EUC/JIS(ISO-2022-JP) to Dart String.
-version: 0.1.0
+version: 0.1.0.1
 homepage: https://github.com/moonsightz/jcombu/
 
 environment:
