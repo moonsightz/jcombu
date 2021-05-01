@@ -272,7 +272,7 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
             if (u0 != null) {
               ucl.add(u0);
             }
-            final u1 = _convertJisImplChar(data, 0x28);
+            final u1 = _convertJisImplChar(data, 0x24);
             if (u1 != null) {
               ucl.add(u1);
             }
