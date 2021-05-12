@@ -1,3 +1,7 @@
+## 0.1.3
+
+- Fixed to keep JIS escape mode in _JisImplData (not in function local, for stream API)
+
 ## 0.1.2
 
 - Fixed a typo in unexpected esc sequence handling

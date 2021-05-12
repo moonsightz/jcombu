@@ -169,10 +169,12 @@ enum _JisEscapeMode {
 
 class _JisImplData {
   var mode = _JisMode.ascii;
+  var escMode = _JisEscapeMode.modeNone;
   int lastCode = 0;
 
   void reset() {
     lastCode = 0;
+    escMode = _JisEscapeMode.modeNone;
   }
 
   void changeMode(_JisMode mode) {
@@ -183,7 +185,6 @@ class _JisImplData {
 
 List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
   const ESC = 0x1b;
-  var escMode = _JisEscapeMode.modeNone;
   var ucl = List<int>.empty(growable: true); // Unicode Codepoint List
 
   for (final c in jisCodes) {
@@ -192,11 +193,11 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
       continue;
     }
 
-    switch (escMode) {
+    switch (data.escMode) {
       case _JisEscapeMode.modeNone:
         switch (c) {
           case ESC:
-            escMode = _JisEscapeMode.modeEsc;
+            data.escMode = _JisEscapeMode.modeEsc;
             break;
           default:
             final u = _convertJisImplChar(data, c);
@@ -209,10 +210,10 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
       case _JisEscapeMode.modeEsc:
         switch (c) {
           case 0x28:
-            escMode = _JisEscapeMode.mode28;
+            data.escMode = _JisEscapeMode.mode28;
             break;
           case 0x24:
-            escMode = _JisEscapeMode.mode24;
+            data.escMode = _JisEscapeMode.mode24;
             break;
           default:
             final u0 = _convertJisImplChar(data, ESC);
@@ -223,7 +224,7 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
             if (u1 != null) {
               ucl.add(u1);
             }
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
         }
         break;
@@ -231,11 +232,11 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
         switch (c) {
           case 0x42:
             data.changeMode(_JisMode.ascii);
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
           case 0x4a:
             data.changeMode(_JisMode.jis_x_6220);
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
           default:
             final u0 = _convertJisImplChar(data, ESC);
@@ -250,7 +251,7 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
             if (u2 != null) {
               ucl.add(u2);
             }
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
         }
         break;
@@ -258,14 +259,14 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
         switch (c) {
           case 0x40:
             data.changeMode(_JisMode.jis_c_6226);
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
           case 0x42:
             data.changeMode(_JisMode.jis_x_0208);
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
           case 0x28:
-            escMode = _JisEscapeMode.mode2428;
+            data.escMode = _JisEscapeMode.mode2428;
             break;
           default:
             final u0 = _convertJisImplChar(data, ESC);
@@ -280,7 +281,7 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
             if (u2 != null) {
               ucl.add(u2);
             }
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
         }
         break;
@@ -288,19 +289,19 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
         switch (c) {
           case 0x44:
             data.changeMode(_JisMode.jis_x_0212);
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
           case 0x4f:
             data.changeMode(_JisMode.jis_x_0213_2000_1);
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
           case 0x50:
             data.changeMode(_JisMode.jis_x_0213_2000_2);
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
           case 0x51:
             data.changeMode(_JisMode.jis_x_0213_2004_1);
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
           default:
             final u0 = _convertJisImplChar(data, ESC);
@@ -319,7 +320,7 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
             if (u3 != null) {
               ucl.add(u3);
             }
-            escMode = _JisEscapeMode.modeNone;
+            data.escMode = _JisEscapeMode.modeNone;
             break;
         }
         break;
@@ -332,7 +333,7 @@ List<int> _convertJisImpl(_JisImplData data, Iterable<int> jisCodes) {
         if (u1 != null) {
           ucl.add(u1);
         }
-        escMode = _JisEscapeMode.modeNone;
+        data.escMode = _JisEscapeMode.modeNone;
         break;
     }
   }
