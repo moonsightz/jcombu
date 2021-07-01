@@ -55,6 +55,7 @@ List<int> _convertShiftJisImpl(_SjisImplData data, Iterable<int> sjisCodes) {
   return ucl;
 }
 
+/// Convert Shift-JIS to Dart String
 String convertShiftJis(Iterable<int> sjisCodes) {
   var data = _SjisImplData();
 
@@ -63,6 +64,7 @@ String convertShiftJis(Iterable<int> sjisCodes) {
   return String.fromCharCodes(ucl);
 }
 
+/// Convert Shift-JIS to Dart String (Stream)
 Stream<String> convertShiftJisStream(
     Stream<Iterable<int>> sjisCodesStream) async* {
   var data = _SjisImplData();
@@ -130,6 +132,7 @@ List<int> _convertEucJpImpl(_EucImplData data, Iterable<int> eucCodes) {
   return ucl;
 }
 
+/// Convert EUC-JP to Dart String
 String convertEucJp(Iterable<int> eucCodes) {
   var data = _EucImplData();
 
@@ -138,6 +141,7 @@ String convertEucJp(Iterable<int> eucCodes) {
   return String.fromCharCodes(ucl);
 }
 
+/// Convert Shift-JIS to Dart String (Stream)
 Stream<String> convertEucJpStream(Stream<Iterable<int>> eucCodesStream) async* {
   var data = _EucImplData();
 
@@ -394,6 +398,7 @@ int? _convertJisImplCharTwoBytes(_JisImplData data, int c, Map table) {
   return r;
 }
 
+/// Convert JIS(ISO-2022-JP) to Dart String
 String convertJis(Iterable<int> jisCodes) {
   var data = _JisImplData();
 
@@ -402,6 +407,7 @@ String convertJis(Iterable<int> jisCodes) {
   return String.fromCharCodes(ucl);
 }
 
+/// Convert JIS(ISO-2022-JP) to Dart String (Stream)
 Stream<String> convertJisStream(Stream<Iterable<int>> jisCodesStream) async* {
   var data = _JisImplData();
 
