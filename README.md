@@ -1,6 +1,6 @@
-# jcombu (Japanese charset convertor)
+# jcombu (Japanese charset converter)
 
-Japanese charset convertor from SJIS/EUC-JP/JIS(ISO-2022-JP) to Dart String.
+Japanese charset converter from SJIS/EUC-JP/JIS(ISO-2022-JP) to Dart String.
 
 
 ## Usage
@@ -20,7 +20,7 @@ See test for more example.
 
 ## Notice
 
-There are some glyphs different from examples in their standard, but they are human-readable.
+Some glyphs are different from the examples in their standards, but human-readable.
 
 
 ## Source code

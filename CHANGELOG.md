@@ -1,3 +1,7 @@
+## 0.1.5
+
+- Fixed spelling
+
 ## 0.1.4
 
 - Added doc comments
