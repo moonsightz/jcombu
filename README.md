@@ -15,7 +15,7 @@ void main() {
 // 亜
 ```
 
-See test for more example.
+See [test](https://github.com/moonsightz/jcombu/blob/main/test/jcombu_test.dart) for more examples.
 
 
 ## Notice

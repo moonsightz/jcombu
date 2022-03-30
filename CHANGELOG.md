@@ -1,3 +1,8 @@
+## 1.0.0
+
+- Fixed typos of docs
+- Separated jcombu_base.dart to jcombu_{sjis,euc,jis}.dart
+
 ## 0.1.5
 
 - Fixed spelling
