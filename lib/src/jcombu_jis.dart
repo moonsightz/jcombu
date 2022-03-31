@@ -225,7 +225,7 @@ int? _convertJisImplChar(_JisImplData data, int c) {
           data, c, jis.iso2022_Jis_X_0213_2004_1_Table);
       break;
     default:
-    // Behave as ASCII.
+      // Behave as ASCII.
       r = c;
       break;
   }
