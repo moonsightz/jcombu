@@ -1,3 +1,7 @@
+## 1.0.1
+
+- Fixed typo(format)
+
 ## 1.0.0
 
 - Fixed typos of docs
