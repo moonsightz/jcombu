@@ -70,7 +70,7 @@ String convertEucJp(Iterable<int> eucCodes) {
 Stream<String> convertEucJpStream(Stream<Iterable<int>> eucCodesStream) async* {
   var data = _EucImplData();
 
-  await for (var eucCodes in eucCodesStream) {
+  await for (final eucCodes in eucCodesStream) {
     final ucl = _convertEucJpImpl(data, eucCodes);
     yield String.fromCharCodes(ucl);
   }

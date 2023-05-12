@@ -67,7 +67,7 @@ Stream<String> convertShiftJisStream(
     Stream<Iterable<int>> sjisCodesStream) async* {
   var data = _SjisImplData();
 
-  await for (var sjisCodes in sjisCodesStream) {
+  await for (final sjisCodes in sjisCodesStream) {
     final ucl = _convertShiftJisImpl(data, sjisCodes);
     yield String.fromCharCodes(ucl);
   }

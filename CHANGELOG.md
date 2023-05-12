@@ -1,3 +1,7 @@
+## 1.1.1
+
+- Added 'var -> final' forgotten in previous.
+
 ## 1.1.0
 
 - Dart 3.
