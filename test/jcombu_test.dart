@@ -108,7 +108,7 @@ void main() {
 
     test('Stream test', () async* {
       final fileStream = io.File('./test/basic.jis').openRead();
-      var s = jcombu.convertJisStream(fileStream);
+      final s = jcombu.convertJisStream(fileStream);
       expect(s, 'Englishと日本語testsです。');
     });
 

@@ -260,7 +260,7 @@ String convertJis(Iterable<int> jisCodes) {
 Stream<String> convertJisStream(Stream<Iterable<int>> jisCodesStream) async* {
   var data = _JisImplData();
 
-  await for (var jisCodes in jisCodesStream) {
+  await for (final jisCodes in jisCodesStream) {
     final ucl = _convertJisImpl(data, jisCodes);
     yield String.fromCharCodes(ucl);
   }
